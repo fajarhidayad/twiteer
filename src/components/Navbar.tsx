@@ -8,13 +8,13 @@ const Navbar = () => {
   const currentUrl = useRouter().asPath;
 
   return (
-    <nav className="bg-white drop-shadow">
-      <div className="container flex justify-between items-center pt-3">
+    <nav className="fixed top-0 bg-white drop-shadow w-full z-50">
+      <div className="container flex justify-between items-center py-4 md:py-0 md:pt-1">
         <Link href={"/"} className="font-pop text-lg font-semibold">
           Twiteer
         </Link>
 
-        <ul className="flex justify-between items-center font-pop font-medium">
+        <ul className="hidden md:flex justify-between items-center font-pop font-medium">
           <NavbarLink href="/" title="Home" isActive={currentUrl === "/"} />
           <NavbarLink
             href="/explore"

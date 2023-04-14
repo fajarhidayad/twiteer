@@ -7,7 +7,9 @@ const App: AppType = ({ Component, pageProps }) => {
   return (
     <>
       <Navbar />
-      <Component {...pageProps} />
+      <div className="bg-slate-200">
+        <Component {...pageProps} />
+      </div>
     </>
   );
 };
