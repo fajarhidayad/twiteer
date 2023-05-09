@@ -21,7 +21,17 @@ const getProviders = () => {
 export function authOptions(): NextAuthOptions {
   return {
     adapter: PrismaAdapter(prisma),
-    callbacks: {},
+    callbacks: {
+      session: async ({ session, user }) => {
+        const userData = await prisma.user.findUnique({
+          where: { email: user.email },
+        });
+
+        session.user.username = userData?.username;
+
+        return session;
+      },
+    },
     providers: getProviders(),
     secret: process.env.NEXTAUTH_SECRET,
   };

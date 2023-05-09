@@ -35,4 +35,24 @@ export const tweetRouter = router({
 
     return tweet;
   }),
+  getTweetByUsername: procedure
+    .input(z.object({ username: z.string() }))
+    .query(async ({ ctx, input }) => {
+      const user = await ctx.prisma.user.findUnique({
+        where: { username: input.username },
+      });
+
+      if (!user)
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "User not found",
+        });
+
+      const tweets = await ctx.prisma.tweet.findMany({
+        where: { authorId: user.id },
+        include: { author: true },
+      });
+
+      return tweets;
+    }),
 });

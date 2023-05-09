@@ -52,7 +52,7 @@ const Navbar = () => {
             content={
               <div className="px-3 py-4 mt-5 rounded-xl bg-white shadow flex flex-col space-y-2 w-40 text-gray-700">
                 <Link
-                  href={"/profile"}
+                  href={`/${user.username}`}
                   className="p-3 text-sm font-medium rounded-lg hover:bg-gray-200 flex items-center"
                 >
                   <FaUserCircle size={20} className="mr-2" />
