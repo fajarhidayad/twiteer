@@ -21,33 +21,9 @@ const getProviders = () => {
 export function authOptions(): NextAuthOptions {
   return {
     adapter: PrismaAdapter(prisma),
-    callbacks: {
-      // async signIn(p) {
-      //   let success = false;
-      //   let body = {}
-      //   if(!p.credentials) {
-      //     let provider = p.account?.provider
-      //     let username = p.user?.name
-      //     let email = p.user?.email
-      //     body = {
-      //       provider,
-      //       username,
-      //       email,
-      //       name: username
-      //     }
-      //   } else {
-      //     body = {
-      //       provider: "credentials",
-      //       username: p.credentials.username,
-      //       password: p.credentials.password
-      //     }
-      //   }
-      //   try {
-      //   } catch (error) {
-      //   }
-      // }
-    },
+    callbacks: {},
     providers: getProviders(),
+    secret: process.env.NEXTAUTH_SECRET,
   };
 }
 

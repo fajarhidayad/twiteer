@@ -23,8 +23,6 @@ const Navbar = () => {
     dispatch(logout);
   };
 
-  console.log(user);
-
   return (
     <nav className="fixed top-0 bg-white drop-shadow w-full z-50">
       <div className="container flex justify-between items-center py-4 md:py-0 md:pt-1">

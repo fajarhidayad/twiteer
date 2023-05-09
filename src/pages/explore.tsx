@@ -10,7 +10,7 @@ const ExplorePage = () => {
   const tweets = trpc.tweet.getAllTweets.useQuery();
 
   return (
-    <main className="container pt-24 grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6 h-[150vh] grid-max-content">
+    <main className="container pt-24 grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-6 min-h-screen grid-max-content">
       <Head>
         <title>Explore | Twiteer</title>
       </Head>
@@ -61,7 +61,9 @@ const ExplorePage = () => {
         ) : (
           <>
             {tweets.data.length > 0 &&
-              tweets.data.map((tweet) => <TweetPost key={tweet.id} />)}
+              tweets.data.map((tweet) => (
+                <TweetPost key={tweet.id} tweet={tweet} />
+              ))}
           </>
         )}
       </section>
